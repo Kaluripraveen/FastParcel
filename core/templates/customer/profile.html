@@ -1,0 +1,57 @@
+{% extends 'customer/base.html'%}
+{% load  bootstrap4 %}
+{%block head%}
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+<script>
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaVv-hizbvmYmfR59ZOGxTSup1SkgXvk0",
+      authDomain: "fastparcel-c7202.firebaseapp.com",
+      projectId: "fastparcel-c7202",
+      storageBucket: "fastparcel-c7202.appspot.com",
+      messagingSenderId: "551686917895",
+      appId: "1:551686917895:web:5b1681ac54ef65807b3fa2"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+{%endblock%}
+{% block main%}
+
+<b class="text-secondary">Basic Information</b>
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+        <form  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {%bootstrap_form user_form%}
+            {%bootstrap_form customer_form%}
+            <input type="hidden" name="action" value="update_profile">
+            <button type="submit" class="btn btn-warning">Save</button>
+        </form>
+    </div>
+</div>
+
+
+
+<b class="text-secondary">Change Password</b>
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+        <form  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {%bootstrap_form password_form %}
+            <input type="hidden" name="action" value="update_password">
+            <button type="submit" class="btn btn-warning">Save</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
