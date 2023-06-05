@@ -54,7 +54,7 @@ google-crc32c==1.5.0
 google-pasta==0.2.0
 google-resumable-media==2.5.0
 googleapis-common-protos==1.59.0
-gpg===1.16.0-unknown
+gpg===1.10.0
 grpcio==1.54.2
 grpcio-status==1.54.2
 h5py==3.8.0
