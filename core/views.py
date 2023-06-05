@@ -18,7 +18,7 @@ def sign_up(request):
             user.username = email
             user.save()
             login(request,user,backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('/')
+            return redirect('customer:profile.html')
         
     return render(request,'sign_up.html',{
         'form':form

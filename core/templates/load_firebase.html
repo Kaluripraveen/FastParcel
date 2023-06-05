@@ -1,0 +1,38 @@
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-messaging.js"></script>
+<script>
+  console.log("KEKEK")
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase cnfiguration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaVv-hizbvmYmfR59ZOGxTSup1SkgXvk0",
+      authDomain: "fastparcel-c7202.firebaseapp.com",
+      projectId: "fastparcel-c7202",
+      storageBucket: "fastparcel-c7202.appspot.com",
+      messagingSenderId: "551686917895",
+      appId: "1:551686917895:web:5b1681ac54ef65807b3fa2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+    messaging.getToken({ vapidKey: 'BA2iDTIfn9TuYDwpymJtsxLAay0ejV2Rs5TM5oHbWqJL5cuIbf8o7uFrekBxEed7nMGZPiVJ0ZtYJjTxwy-nsTQ' }).then((currentToken) => {
+      if (currentToken) {
+        // Send the token to your server and update the UI if necessary
+        // ...
+        if (currentToken){
+          fetch('{%url "courier:fcm_token_update_api"%}?fcm_token=' + currentToken);
+          console.log(currentToken);
+        }
+      } else {
+        // Show permission request UI
+        console.log('No registration token available. Request permission to generate one.');
+        // ...
+      }
+    }).catch((err) => {
+      console.log('An error occurred while retrieving token. ', err);
+      // ...
+    });
+</script>

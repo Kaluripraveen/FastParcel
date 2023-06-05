@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ntq%ebh-^r0*4t-47@#(l*hg=l98btwk&s2+hvmg+d5k3m#$ba
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','https://67a8-175-101-12-19.ngrok-free.app','.vercel.app','.now.sh']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'social_django',
     'core.apps.CoreConfig',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -159,6 +160,31 @@ EMAIL_HOST_USER ='praveenkaluri9666@gmail.com'
 EMAIL_HOST_PASSWORD='vmsxbtxiuztojaon'
 DEFAULT_FROM_EMAIL = 'Fast Parcel <no-reply@fastparcel.localhost>'
 
+FIREBASE_ADMIN_CREDENTIAL = os.path.join(BASE_DIR,"fastparcel-c7202-firebase-adminsdk-ounz9-fb670e671e.json")
 
 STRIPE_API_PUBLIC_KEY= "pk_test_51NDBtVSJjF2suq3igmku0NajxZPWKlycQCGotCNRsxDeV6Z1lXlGbW63RKpiPU2TL8WuqcOZNAo6YGrOyavX0aeF00QSbh8qOD"
 STRIPE_API_SECRET_KEY ="sk_test_51NDBtVSJjF2suq3iT4cqTPJp6tdquBlXJ9md4LcaOWk85CvTslVwTC7Cvy5CrXO1lWBBfWxCb6gOL7BWykiAfKVp00vFLr2rT6"
+
+
+
+GOOGLE_MAP_API_KEY = "AIzaSyBJk-tZnc2YsEn2yJXOWJ1Z8aCOz21omCA"
+
+PAYPAL_MODE ="sandbox"
+PAYPAL_CLIENT_ID = "Ab6l_P8qEFZ3oW7yYYaP2Mj4ebQ9qfy8r_grNzuR8z26tcmo_nXFrhk0GN7WDgdNOKi9M_wI6In3v8RE"
+PAYPAL_CLIENT_SECRET="EIG-qhLGKjR__fES0rBn61cTd9BLBlBDa_G11G0ABsB60UFEsZp4Yos_lz2542Q65hPraR4JqX_DXHJ0"
+
+
+NOTIFICATION_URL = "https://67e7-175-101-12-19.ngrok-free.app/"
+
+ASGI_APPLICATION = "fastparcel.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
