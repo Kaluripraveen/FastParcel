@@ -34,7 +34,6 @@ django-cors-headers==3.13.0
 django-jazzmin==2.6.0
 django-rest-framework==0.1.0
 djangorestframework==3.13.1
-duplicity==0.8.21
 fasteners==0.14.1
 filelock==3.9.0
 firebase==4.0.1
